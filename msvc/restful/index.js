@@ -80,3 +80,32 @@ server.listen(4000, () => {
 
    return addUserInfo(contents, mapUserInfo);
  }
+
+ /**
+ *
+ * @description 调用外部 api，暂时只处理 get 逻辑
+ * @param string api
+ * @param string method
+ * @param object params
+ */
+
+ async function callApi(api, params = {}, method = 'get') {
+   const paramsStr = querystring.stringify(params);
+   if(api.indexOf('?') === -1) {
+     api = `${api}?`;
+   }
+   api = `${apo}${paramsStr}`;
+
+   let retStr = await rq(api);
+   try {
+     retInfo = JSON.parse(retStr);
+   } catch (err) {
+     return false;
+   }
+
+   if(retInfo['ret'] !== 0 || !retInfo['data']) {
+     return false;
+   }
+
+   return retInfo['data'];
+ }
