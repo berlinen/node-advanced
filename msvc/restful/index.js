@@ -109,3 +109,18 @@ server.listen(4000, () => {
 
    return retInfo['data'];
  }
+
+ /**
+ *
+ * @desc 在 content 中增加 userinfo
+ * @param {*} contents
+ * @param {*} userinfo
+ */
+
+ function addUserInfo(contents, mapUserInfo = {}) {
+   return contents.map(content => {
+     content['user_info'] = mapUserInfo[content['user_id']]
+                            ? mapUserInfo[content['user_id']]
+                            : {};
+   })
+ }
