@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "assert": "^2.0.0",
-    "mongodb": "^3.6.4"
+    "mongodb": "^3.6.4",
+    "mongoose": "^5.12.0"
   }
 }
