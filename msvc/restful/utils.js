@@ -10,6 +10,7 @@ const baseMongodb = require("./lib/baseMongodb")();
  * @param int httpStatus
  */
 function setResInfo({res, ret, message, dataInfo, httpStatus = 200}) {
+ 
   let retInfo = {};
   if(!ret) {
     retInfo = {
@@ -36,7 +37,7 @@ function setResInfo({res, ret, message, dataInfo, httpStatus = 200}) {
  */
 async function queryData (queryOption) {
   const client = await baseMongodb.getClient();
-  const collection = client.db('nodejs_column').collection('user');
+  const collection = client.db('nodejs_column').collection('content');
   const queryArr = await collection.find(queryOption).toArray();
 
   return queryArr;
