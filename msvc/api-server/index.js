@@ -3,8 +3,6 @@ const url = require('url');
 const querystring = require('querystring');
 const { setResInfo, queryData } = require('./utils');
 
-const baseMongo = require('./lib/baseMongodb')();
-
 /**
  * 创建http
  *
