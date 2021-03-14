@@ -11,8 +11,9 @@ const { setResInfo, queryData } = require('./utils');
  const server = htttp.createServer(async(req, res) => {
   // 获取get参数
   const pathname = url.parse(req.url).pathname;
-  const paramStr = url.parse(req.url).query;
-  const param = querystring.parse(paramStr);
+  paramStr = url.parse(req.url).query;
+  param = querystring.parse(paramStr);
+  console.log('param', param)
   // 过滤非拉取用户信息请求
   if('/v1/userinfo' !== pathname) {
     return setResInfo({

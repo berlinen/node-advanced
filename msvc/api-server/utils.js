@@ -36,7 +36,7 @@ function setResInfo({res, ret, message, dataInfo, httpStatus = 200}) {
  */
 async function queryData (queryOption) {
   const client = await baseMongodb.getClient();
-  const collection = client.db('nodejs_column').collection('user');
+  const collection = client.db('berlin').collection('user');
   const queryArr = await collection.find(queryOption).toArray();
 
   return queryArr;
