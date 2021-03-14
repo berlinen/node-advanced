@@ -4,7 +4,7 @@ const ApiCenter = require('../core/apiCenter');
 
 class Content extends Controller {
   constructor(res, req) {
-    super();
+    super(res, req);
   }
 
   async list () {

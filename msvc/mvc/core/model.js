@@ -1,17 +1,18 @@
-const baseMongo = require('./baseMongodb');
+const baseMongo = require('../core/baseMongodb')();
+
+
 
 class Model {
-  constructor () {
-    this.db = 'berlin'
-    this.baseMongo = baseMongo
+  constructor() {
+      this.db = 'nodejs_cloumn';
+      this.baseMongo = baseMongo;
   }
 
-  async get(collectName) {
-    const client = await this.baseMongo.getClient();
-    const collection = client.db(this.db).collection(collectName);
-    return collection
+  async get(collectionName) {
+      const client = await this.baseMongo.getClient();
+      const collection = client.db(this.db).collection(collectionName);
+      return collection;
   }
 }
-
 
 module.exports = Model;

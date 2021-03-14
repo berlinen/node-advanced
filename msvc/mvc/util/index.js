@@ -1,4 +1,4 @@
-const baseMongodb = require("./lib/baseMongodb")();
+const baseMongodb = require("../core/baseMongodb")();
 
 /**
  *
