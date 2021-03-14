@@ -2,7 +2,7 @@ const http = require('http');
 const url = require('url');
 const querystring = require('querystring');
 
-const baseFun = require('./util/baseFun');
+const { setResInfo } = require('./util');
 
 const routerMapping = {
     '/v1/contents' : {
@@ -24,7 +24,13 @@ const server = http.createServer(async (req, res) => {
 
     // 过滤非拉取用户信息请求
     if(!routerMapping[pathname]) {
-      return baseFun.setResInfo(res, false, 'path not found', null, 404);
+      return setResInfo({
+        res,
+        ret: false,
+        msessage: 'path not found',
+        dataInfo: null,
+        httpStatus: 404
+      })
     }
     // require 对应的 controller 类
     const ControllerClass = require(`./controller/${routerMapping[pathname]['controller']}`);
@@ -42,7 +48,13 @@ const server = http.createServer(async (req, res) => {
         }
     } catch (error) { // 异常时，需要返回 500 错误码给前端
         console.log(error);
-        return baseFun.setResInfo(res, false, 'server error', null, 500);
+        return setResInfo({
+          ret: false,
+          res,
+          message: 'server error',
+          dataInfo: null,
+          httpStatus: 500
+        })
     }
 });
 

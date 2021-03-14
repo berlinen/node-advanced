@@ -14,11 +14,18 @@ class Content extends Controller {
 
         contentList = await contentService.filterUserinfo(contentList);
 
-        return this.resApi(true, 'success', contentList);
+        return this.resApi({
+          ret: true,
+          message: 'success',
+          dataInfo:contentList
+        });
     }
 
     test() {
-        return this.resApi(true, 'good');
+      return this.resApi({
+        ret: true,
+        message: 'good',
+      });
     }
 }
 
