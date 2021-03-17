@@ -1,3 +1,6 @@
-const txt = require('./module');
+require('./require');
 
-console.log(txt);
+const result = _require('./module.js');
+
+console.log('result', result)
+
