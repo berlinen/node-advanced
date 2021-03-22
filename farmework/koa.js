@@ -1,5 +1,8 @@
 const Koa = require('koa');
 const Router = require('koa-router');
+// koa-static
+// koa-boody
+// koa-premeter // 校验参数
 
 const app = new Koa();
 const router = new Router();
@@ -19,6 +22,10 @@ function sleep (n) {
 
 // koa 中间件
 app.use(async (ctx, next) => {
+  // ctx.req === ctx.resquest.req ctx封装
+  // ctx.res === ctx.response.res  ctx封装
+  // ctx.resquest 原声node request
+  // ctx.response 原声node response
   // koa => context
   // koa -> 中间件 1.0 generator 2.0 async
   // 可以使用异步
