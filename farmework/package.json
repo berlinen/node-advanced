@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start:node": "nodemon node.js",
+    "start:express": "nodemon express.js",
+    "start:koa": "nodemon koa.js"
+  }
+}
