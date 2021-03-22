@@ -12,6 +12,7 @@ const app = http.createServer(function(req, res) {
   const arr = [];
 
   req.on('data', function(chunk) {
+    // chunk is buffer
     arr.push(chunk)
   });
 
@@ -22,9 +23,18 @@ const app = http.createServer(function(req, res) {
 
   if(pathname === '/') {
     // 首页route
+  } else if(pathname === '/user') {
+    // user route
+  } else {
+    // 404
   }
+  // 请求头
+  console.log('header', req.headers)
 
-  res.end(pathname)
+  // 设置相应头
+  res.setHeader('Content-type', 'text/html;charset=utf-8')
+
+  res.end('你好啊')
 })
 
 app.listen(3000, () => {
