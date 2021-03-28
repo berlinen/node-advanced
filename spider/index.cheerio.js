@@ -17,6 +17,7 @@ axios.get(url)
       const src = $(img).attr('src');
       const url = src.split('?')[0];
       const id = url.split('/').pop();
+      // 鉴权
       return axios.get(src, {
         headers: {
           referer: "https://www.bigbigwork.com/tupian/shu49_1.html"
