@@ -87,7 +87,7 @@ class CpuOverload {
         console.log(err);
         return;
       }
-    })
+    }, 2000)
   }
 
   /**
