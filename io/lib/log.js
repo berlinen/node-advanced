@@ -14,8 +14,8 @@ class Log {
    *
    * @param {*} cacheEnable 是否开启
    * @param {*} cacheTime // 缓存事件
-   * @param {*} maxLen  // 最大文件长度
-   * @param {*} maxFileStream // 最大单个文件
+   * @param {*} maxLen  // 最大文件个数
+   * @param {*} maxFileStream // 最大单个文件大小
    */
   constructor(cacheEnable = true, cacheTime = 2000, maxLen = 100000, maxFileStream = 1000) {
     this.cacheTime = cacheTime;
