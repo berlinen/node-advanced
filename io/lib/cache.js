@@ -39,4 +39,36 @@ class Cache {
 
     return value;
   }
+  /**
+   * @desc 保存缓存信息
+   * @param {*} key 缓存key
+   * @param {*} value 缓存value
+   * @param {*} expire 过期时间 秒
+   * @param {*} cacheLocal 是否本地缓存
+   */
+  async set (key, value, expire = 10, cacheLocal = false) {
+    let localCacheRet, redisRet;
+    if(this.localCacheEnable && cacheLocal) {
+      localCacheRet = this.myCache.set(key, value, expire);
+    }
+    if(this.redisEnable) {
+      try {
+        redisRet = await promiseify(this.client.set).bind(this.client)(key, value, 'EX', expire);
+      } catch(err) {
+        console.error(err)
+      }
+    }
+    return localCacheRet || redisRet;
+  }
+
+  async getRedis() {
+    if(!this.redisEnable) {
+      return null
+    }
+    return this.client;
+  }
+}
+
+module.exports = function(localCacheEnable = true, redisEnable = true) {
+  return new Cache(localCacheEnable, redisEnable);
 }
